@@ -5,7 +5,8 @@ const mustacheExpress = require('mustache-express');
 const bodyParser = require("body-parser");
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
-/* BCrypt stuff here */
+
+//declare constants
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
@@ -13,6 +14,7 @@ app.set('views', __dirname + '/views');
 app.use("/", express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+//call functions
 
 app.use(session({
   secret: 'theTruthIsOutThere51',
@@ -24,11 +26,13 @@ app.use(session({
 //when pushing a project, module file ignored
 //npm install will install dependencies
 
-var db = pgp(process.env.DATABASE_URL) || pgp('postgres://student_07@localhost:5432/p2_user');
+var db = pgp('postgres://student_07@localhost:5432/p2_user') || pgp(process.env.DATABASE_URL);
+//database route
 
-// now, we can set up routes!
+// set routes
 app.get('/', function(req, res){ // request and response
- // need to take sessions into account and add a few more lines before the res.render
+ // need to take sessions into account and
+ //add a few more lines before the res.render
  var logged_in;
  var email;
  if(req.session.user){ // the session is remembered
@@ -36,17 +40,17 @@ app.get('/', function(req, res){ // request and response
    email = req.session.user.email
  }
  var data = {
-   'logged_in': logged_in, // for now, we'll set this value to always false
+   'logged_in': logged_in,
    'email': email
  }
- res.render('index', data); // the response we want
+ res.render('index', data);
 })
 
 
 app.get('/signup', function(req, res){
   res.render('signup/index')
 });
-
+//signup screen
 
 app.post('/signup', function(req, res){
   //save user to db and encrypt pw
@@ -57,29 +61,75 @@ app.post('/signup', function(req, res){
     [data.email, hash]
     ).then(function(){
       res.send('User Created')
+//hash pw, insert user and hash into db
     })
   });
 });
 
 app.post('/login', function(req, res){
   var data = req.body;
+//login screen
 
   db.one(
     "SELECT * FROM users WHERE email = $1",
     [data.email]
+//searches db for user email
   ).catch(function(){
     res.send('Email/Password not found.')
+//if email not found
   }).then(function(user){
     bcrypt.compare(data.password, user.password_digest, function(err, cmp){
+ //compares password hash
       if(cmp){
         req.session.user = user;
         res.redirect('/');
+//send user to profile if pw/email correct
       } else {
         res.send('Email/Password not found.')
+//sends user message
       }
     });
   });
 });
+
+
+app.all('*', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'accept, content-type, x-parse-application-id, x-parse-rest-api-key, x-parse-session-token');
+     // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+      res.send(200);
+    }
+    else {
+      next();
+    }
+});
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+ xhttp.open("GET", "http://poetrydb.org/title/Ozymandias/lines.json", true);
+  xhttp.send();
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="<tr><th>Artist</th><th>Title</th></tr>";
+  var x = xmlDoc.getElementsByTagName("CD");
+  for (i = 0; i <x.length; i++) {
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
 
 
 var port = process.env.PORT || 3000;
