@@ -1,10 +1,46 @@
-.main-container {
-  width: 980px;
-  margin: 0 auto;
-}
-
-h1 {
+body{
+  background-color: #333333;
   text-align: center;
+  color:   color: #FFFFFF;
 }
 
-.center-block { float: none }
+input{
+  width: 20em;
+}
+textarea {
+    border: 0.1em solid #ccc;
+    border-radius: 0.5em;
+    background-color: transparent;
+    margin: 1em;
+    padding: .5em;
+    width: 100%;
+    height: 100%;
+    color: white;
+ }
+h1, h3, p, h4{
+  color: #FFFFFF;
+}
+
+#poemTitle, #handle{
+    font-size: 1.5em;
+    width: 20em;
+    height: 2em;
+    font-weight: bold;
+    overflow: auto;
+    text-align: center;
+}
+
+#poemText, #notes{
+    font-size: 1em;
+    width: 40em;
+    height: 20em;
+    letter-spacing: 1px;
+}
+#walt{
+  height: 300px;
+  width: 300px;
+  border-radius: 100%;
+}
+#poemTextP{
+  background-color: black;
+}

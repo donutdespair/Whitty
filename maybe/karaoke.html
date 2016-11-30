@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+  <title></title>
+</head>
+
+<body>
+
+<h1>Get XML</h1>
+<p id ="text">Stuff </p>
+
+<button type="button" onclick="loadDoc()">Get song</button>
+<br><br>
+<table id="demo"></table>
+
+<script>
+var loadDoc = function() {
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET', "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist='blondie'&song='heart of glass'");
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        alert(xhr.responseText);
+document.getElementById('text')
+        .appendChild(document.createTextNode(xhr.responseText));
+    }
+    else {
+        alert('Request failed.  Returned status of ' + xhr.status);
+    }
+};
+xhr.send();
+
+
+};
+</script>
+
+</body>
+</html>
