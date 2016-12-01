@@ -40,9 +40,9 @@ app.get('/analyze', function(req, res) {
 
 //analyses with data
 app.get('/analyses', function(req, res){
-  db.any('SELECT poem_id, poem_title, poem_text, handle, note_text, responses.response_text, responses.response_handle FROM poems LEFT OUTER JOIN responses ON (poems.poem_id=original_responder_id);')
+  db.any('SELECT poem_id, poem_title, poem_text, handle, note_text FROM poems;')
   .then(function(data){
-    res.render('analyses/index', {poems:data, responses:data})
+    res.render('analyses/index', {poems:data})
   });
 });
 
@@ -65,7 +65,7 @@ app.delete('/analyses/:id',function(req, res){
 
 
 app.get('/poems/:id',function(req, res){
-  db.one('SELECT * FROM original_poems where ID = $1',[req.params.id])
+  db.one('SELECT * FROM original_poems where original_poem_id = $1',[req.params.id])
   .then(function(data){
     var poem = data
     res.render('poems/show',poem);

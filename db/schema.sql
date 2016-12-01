@@ -8,16 +8,6 @@ CREATE TABLE poems (
   note_text TEXT
 );
 
-DROP TABLE IF EXISTS responses;
-
-CREATE TABLE responses (
-  response_id SERIAL PRIMARY KEY,
-  response_title TEXT,
-  response_text TEXT,
-  response_handle VARCHAR(255),
-  original_responder_id INTEGER REFERENCES poems(poem_id)
-);
-
 DROP TABLE IF EXISTS original_poems;
 CREATE TABLE original_poems (
   original_poem_id SERIAL PRIMARY KEY,
