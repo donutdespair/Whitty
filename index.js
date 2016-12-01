@@ -33,33 +33,51 @@ var db = pgp('postgres://student_07@localhost:5432/whitman_db') || pgp(process.e
 app.get('/home', function(req, res) {
     res.render('home/index');
   });
-
 app.get('/analyze', function(req, res) {
     res.render('search/index');
   });
 
+
+//analyses with data
 app.get('/analyses', function(req, res){
-  db.any('SELECT poem_id, poem_title, poem_text, handle, note_text, responses.response_text, responses.response_handle FROM poems LEFT OUTER JOIN responses ON (poems.poem_id=responses.response_id);')
+  db.any('SELECT poem_id, poem_title, poem_text, handle, note_text, responses.response_text, responses.response_handle FROM poems LEFT OUTER JOIN responses ON (poems.poem_id=original_responder_id);')
   .then(function(data){
     res.render('analyses/index', {poems:data, responses:data})
   });
 });
 
 
-//notes
+//add poem and notes to db
 app.post('/analyses',function(req, res){
   poem = req.body
 //create - insert poem from ajax call and user notes into poems table in whitman_db
   db.none('INSERT INTO poems (poem_title,poem_text,handle,note_text) VALUES ($1,$2,$3,$4)',
     [poem.poem_title,poem.poem_text,poem.handle,poem.note_text]),
-
   res.render('search/index')
-});
-
+  });
+//delete route
 app.delete('/analyses/:id',function(req, res){
   id = req.params.id
   db.none("DELETE FROM poems WHERE poem_id=$1", [id])
   res.render('home/index')
+  });
+
+
+
+app.get('/poems/:id',function(req, res){
+  db.one('SELECT * FROM original_poems where ID = $1',[req.params.id])
+  .then(function(data){
+    var poem = data
+    res.render('poems/show',poem);
+  });
+});
+
+app.get('/poems', function(req, res){
+  db.any('SELECT original_poem_id, original_poem_title, original_poem_text, author_handle, critiques.critique_text, critiques.critic_handle FROM original_poems LEFT OUTER JOIN critiques ON (original_poems.original_poem_id=critiques.critique_id);')
+  .then(function(data){
+    res.render('poems/index', {original_poems:data, critiques:data})
+    console.log({original_poems:data, critiques:data})
+  });
 });
 
 

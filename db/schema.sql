@@ -50,3 +50,5 @@ CREATE TABLE critiques (
 --SELECT poem_id, responses.response_id, poem_title, poem_text, handle, note_text, responses.response_text, responses.response_handle FROM poems LEFT OUTER JOIN responses ON (poems.poem_id=responses.response_id);
 
 --ALTER TABLE responses RENAME COLUMN id TO response_id;
+
+--SELECT original_poem_id, original_poem_title, original_poem_text, author_handle, critiques.critique_text, critiques.critic_handle FROM original_poems LEFT OUTER JOIN critiques ON (original_poems.original_poem_id=critiques.critique_id);
