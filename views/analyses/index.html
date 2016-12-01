@@ -26,14 +26,14 @@
         </h1>
       </div>
       <ul class="nav nav-tabs">
-        <li class="active">
-          <a href="#">Home</a>
+        <li>
+          <a href="/home">Home</a>
         </li>
         <li>
-          <a href="#">Analyze Poems</a>
+          <a href="/analyze">Analyze Poems</a>
         </li>
         <li>
-          <a href="#">See Analyses</a>
+          <a href="/analyses">See Analyses</a>
         </li>
       </ul>
     </div>
@@ -44,15 +44,16 @@
   <div class="card-block">
     <h4 class="card-title">Poem Title: {{poem_title}}</h4>
     <h4 class="card-title">Handle: {{handle}}</h4>
-    <p class="card-text">Analysis: {{note_text}}</p>
-    <button id="seePoem" class="btn btn-primary">Toggle Poem</button>
-    <a href="notes/{{poem_id}}" onclick="return popitup('notes/{{poem_id}}')" class="btn btn-primary">See Responses</a>
-    <a href="#" class="btn btn-primary">Delete Analysis</a>
-    <p id="pCard-text" class="card-text">{{poem_text }}</p>
+    <button class="btn btn-primary seePoem">Toggle Poem</button>
+    <p class="pCard-text" class="card-text">{{poem_text }}</p>
+    <button class="btn btn-primary seeAnalysis">Toggle Analysis</button>
+    <p class="aCard-text" class="card-text">{{note_text }}</p>
   </div>
 </div>
 <br>
 {{/poems}}
+</div>
+
     <script
       src="https://code.jquery.com/jquery-3.1.1.js"
       integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
@@ -60,19 +61,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
     <script src="/js/jquery.easy-autocomplete.min.js"></script>
-    <script language="javascript" type="text/javascript">
-
-function popitup(url) {
-  newwindow=window.open(url,'name','height=400,width=400');
-  if (window.focus) {newwindow.focus()}
-  return false;
-}
-
-$(function(){
-    $('#seePoem').on('click',function(){
-        $('#pCard-text').toggle();
-    });
-});
-</script>
+    <script language="javascript" type="text/javascript"></script>
   </body>
 </html>
