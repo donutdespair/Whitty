@@ -44,3 +44,6 @@ h1, h3, p, h4{
 #poemTextP{
   background-color: black;
 }
+#searchButton{
+  float: left;
+}

@@ -6,14 +6,15 @@ $(function(){
     $('.seePoem').on('click',function(){
         $('.pCard-text').toggle();
     });
-});
+})
 
 
 $(function(){
     $('.seeAnalysis').on('click',function(){
         $('.aCard-text').toggle();
     });
-});
+})
+
   var getData = function(poemTitle){
   var poemUrl = "http://poetrydb.org/author,title/Walt Whitman;" + poemTitle;
   $.ajax({
@@ -32,7 +33,7 @@ handleResponse(poemUrl);
     html
   ("<form method='POST' action='/analyses'><div class='col-md-12'><textarea name='poem_title' id='poem_title'>" +
   title + "</textarea></div><div class='col-md-12'><textarea name='poem_text' id='poem_text'>" + lines +
-  "</textarea></div><div class='col-md-12'><textarea name='handle' id='handle' placeholder='Handle'></textarea></div><div class='col-md-12'><textarea name='note_text' id='note_text' placeholder='Analysis'></textarea></div><br><button type='submit'>Submit</button></form>");
+  "</textarea></div><div class='col-md-12'><textarea name='handle' id='handle' placeholder='Handle'></textarea></div><div class='col-md-12'><textarea name='note_text' id='note_text' placeholder='Analysis'></textarea></div><br><button class='btn btn-default' type='submit'>Submit</button></form>");
       $('#poem_title').prop('readonly', true);
       $('#poem_text').prop('readonly', true);
     };
@@ -49,7 +50,7 @@ handleResponse(poemUrl);
     });
  };
 
-
+addAJAXFunction();
 
 
   var handleResponse = function(data){
@@ -64,6 +65,6 @@ handleResponse(poemUrl);
 
 
 
-addAJAXFunction();
+
 
 });
