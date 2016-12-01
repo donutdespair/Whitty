@@ -1,29 +1,30 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+user_handle VARCHAR(25) PRIMARY KEY
+);
+
+
 DROP TABLE IF EXISTS poems;
 
 CREATE TABLE poems (
   poem_id SERIAL PRIMARY KEY,
   poem_title VARCHAR(255),
   poem_text TEXT,
-  handle VARCHAR(255)
+  handle VARCHAR(25) REFERENCES users(user_handle),
   note_text TEXT
 );
 
-DROP TABLE IF EXISTS original_poems;
-CREATE TABLE original_poems (
-  original_poem_id SERIAL PRIMARY KEY,
-  original_poem_title VARCHAR(255),
-  original_poem_text TEXT,
-  author_handle VARCHAR(255)
-);
 
+/*
 DROP TABLE IF EXISTS critiques;
 CREATE TABLE critiques (
   critique_id SERIAL PRIMARY KEY,
   critique_text TEXT,
   critic_handle VARCHAR(255),
-  author_id INTEGER REFERENCES original_poems(original_poem_id)
+  original_poem_id INTEGER REFERENCES poems(poem_id)
 );
-
+*/
 
 -- psql -d whitman_db -f schema.sql
 
