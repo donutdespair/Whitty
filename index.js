@@ -56,6 +56,11 @@ app.post('/analyses',function(req, res){
   res.render('search/index')
 });
 
+app.delete('/analyses/:id',function(req, res){
+  id = req.params.id
+  db.none("DELETE FROM poems WHERE poem_id=$1", [id])
+  res.render('home/index')
+});
 
 
 var port = process.env.PORT || 3000;
