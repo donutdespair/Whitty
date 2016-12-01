@@ -20,7 +20,7 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //call functions
-/*
+
 var pg = require('pg');
 
 pg.defaults.ssl = true;
@@ -33,13 +33,13 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
     .on('row', function(row) {
       console.log(JSON.stringify(row));
     });
-});*/
+});
 //when pushing a project, module file ignored
 //npm install will install dependencies
 
-//var db = pgp(process.env.DATABASE_URL) || pgp('postgres://student_07@localhost:5432/whitman_db');
+var db = pgp(process.env.DATABASE_URL) || pgp('postgres://student_07@localhost:5432/whitman_db');
 //database route
-var db = pgp('postgres://student_07@localhost:5432/whitman_db');
+//var db = pgp('postgres://student_07@localhost:5432/whitman_db');
 // set routes
 //get routes
 app.get('/home', function(req, res) {
@@ -57,8 +57,6 @@ app.get('/signedup', function(req, res) {
 app.get('/no_dice', function(req, res) {
     res.render('no_dice/index');
   });
-
-
 
 //analyses with data
 app.get('/analyses', function(req, res){
