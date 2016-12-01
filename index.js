@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 //when pushing a project, module file ignored
 //npm install will install dependencies
 
-var db = pgp('postgres://student_07@localhost:5432/whitman_db') || pgp(process.env.DATABASE_URL);
+var db = pgp(process.env.DATABASE_URL) || pgp('postgres://student_07@localhost:5432/whitman_db');
 //database route
 
 // set routes
