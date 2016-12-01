@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+English|Forum');
 body{
   background-color: #333333;
   text-align: center;
   color:   color: #FFFFFF;
+  font-family: 'Forum', cursive;
 }
 
 input{
@@ -20,6 +22,12 @@ textarea {
 h1, h3, p, h4{
   color: #FFFFFF;
 }
+h1, a{
+  font-family: 'IM Fell English', serif;
+}
+p{
+  letter-spacing: 1px;
+}
 
 #poem_title, #handle{
     font-size: 1.5em;
@@ -30,7 +38,7 @@ h1, h3, p, h4{
     text-align: center;
 }
 
-#poem_text, #note_text{
+#poem_text, #note_text, #note_textR{
     font-size: 1em;
     width: 40em;
     height: 20em;
@@ -46,4 +54,7 @@ h1, h3, p, h4{
 }
 #searchButton{
   float: left;
+}
+.hidden{
+  visibility: hidden;
 }

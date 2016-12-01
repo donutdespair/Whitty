@@ -35,6 +35,9 @@
         <li>
           <a href="/analyses">See Analyses</a>
         </li>
+        <li>
+          <a href="/signup">Sign Up</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -43,18 +46,22 @@
   <div class="card">
   <div class="card-block">
     <h4 class="card-title">Poem Title: {{poem_title}}</h4>
-    <h4 class="card-title">Handle: {{handle}}</h4>
+    <h4 class="card-title">Critic Handle: {{handle}}</h4>
     <button class="btn btn-primary seePoem">Toggle Poem</button>
-    <p class="pCard-text" class="card-text">{{poem_text }}</p>
+    <p class="pCard-text" class="card-text"><textarea class="hidden" name='poem_text' id='poem_text'>{{poem_text }}</textarea></p>
     <button class="btn btn-primary seeAnalysis">Toggle Analysis</button>
-    <p class="aCard-text" class="card-text">{{note_text }}</p>
-  </div>
-</div>
-<br>
-    <form method="POST" action="/analyses/{{poem_id}}?_method=DELETE"> 
+    <p class="aCard-text" class="card-text"><textarea class="hidden" name='note_textR' id='note_textR'>{{note_text }}</textarea></p>
+    <button class="btn btn-primary editAnalysis">Edit Analysis</button>
+    <form onsubmit="return confirm('Do I contradict myself? More importantly, do you really want to submit these edits?');" class="inputForm" method="POST" action="/analyses/{{poem_id}}?_method=PUT">
+    <textarea class ="hidden" name="note_text" id="note_text" value="{{note_text}}">{{note_text}}</textarea><br>
+    <button class="btn btn-primary" type="submit">Save Edits</button>
+    </form>
+    <br><br>
+    <form onsubmit="return confirm('Do you want to delete this analysis? Do anything, but let it produce joy.')" method="POST" action="/analyses/{{poem_id}}?_method=DELETE"> 
     <button class="btn btn-primary">Delete Analysis</button> 
-  </form>
-  <br>
+    </form>
+  </div>
+  </div>
 {{/poems}}
 </div>
 

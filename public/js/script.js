@@ -2,18 +2,18 @@ $(document).ready(function(){
   console.log("loaded");
 $('.pCard-text').hide();
 $('.aCard-text').hide();
-$(function(){
-    $('.seePoem').on('click',function(){
-        $('.pCard-text').toggle();
-    });
-})
+$('.inputForm').hide();
+$('#note_textR').prop('readonly', true);
+$('#poem_text').prop('readonly', true);
 
+$("button").click(function(){
+   $(this).next().toggle()
+   $("textarea").removeClass('hidden');
+});
 
-$(function(){
-    $('.seeAnalysis').on('click',function(){
-        $('.aCard-text').toggle();
-    });
-})
+$("editAnalysis").click(function(){
+     $("textarea").removeClass('hidden');
+   });
 
   var getData = function(poemTitle){
   var poemUrl = "http://poetrydb.org/author,title/Walt Whitman;" + poemTitle;
@@ -26,7 +26,6 @@ handleResponse(poemUrl);
     }
   });
 };
-
 
   var appendPoem = function(title, lines){
     $("#poemDisplay").
@@ -46,12 +45,10 @@ handleResponse(poemUrl);
     $('#searchButton').click(
     function(){
         $('input').val('');
-
     });
  };
 
-addAJAXFunction();
-
+  addAJAXFunction();
 
   var handleResponse = function(data){
     var data = data[0]
@@ -61,10 +58,4 @@ addAJAXFunction();
     console.log(lines)
     appendPoem(title, lines);
     };
-
-
-
-
-
-
 });

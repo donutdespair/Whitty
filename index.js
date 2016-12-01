@@ -39,6 +39,12 @@ app.get('/analyze', function(req, res) {
 app.get('/signup', function(req, res) {
     res.render('signup/index');
   });
+app.get('/signedup', function(req, res) {
+    res.render('signedup/index');
+  });
+app.get('/no_dice', function(req, res) {
+    res.render('no_dice/index');
+  });
 
 
 
@@ -55,29 +61,42 @@ app.post('/analyses',function(req, res){
   poem = req.body
 //create - insert poem from ajax call and user notes into poems table in whitman_db
   db.none('INSERT INTO poems (poem_title,poem_text,handle,note_text) VALUES ($1,$2,$3,$4)',
-    [poem.poem_title,poem.poem_text,poem.handle,poem.note_text]),
-  res.redirect('analyses')
+    [poem.poem_title,poem.poem_text,poem.handle,poem.note_text]
+    ).catch(function(){
+    res.redirect('/no_dice')
+  }).then(function(){
+  res.redirect('/analyses')
   });
+});
 //delete route
 app.delete('/analyses/:id',function(req, res){
   id = req.params.id
   db.none("DELETE FROM poems WHERE poem_id=$1", [id])
-  res.redirect('/')
+  res.redirect('/analyses')
   });
 
+//update route
+app.put('/analyses/:id',function(req, res){
+  analysis = req.body
+  id = req.params.id
 
+  db.none("UPDATE poems SET note_text=$1 WHERE poem_id=$2",
+    [analysis.note_text, id])
 
+  res.redirect('/analyses');
+});
+
+//signup route
 app.post('/signup', function(req, res){
   var data = req.body;
     db.none(
       "INSERT INTO users (user_handle) VALUES ($1)",
       [data.user_handle]
-    ).then(function(){
-      res.render('signup/signedup')
-    }
     ).catch(function(){
-    res.send('User name taken.')
-  })
+    res.redirect('/no_dice')
+  }).then(function(){
+      res.redirect('/signedup')}
+    )
   });
 
 

@@ -1,12 +1,69 @@
-<form class="form-horizontal" action="/signup" method="post">
-              <fieldset>
-                <legend>Sign Up</legend>
-                <div class="form-group">
-                  <label for="user_handle" class="col-lg-2 control-label">Handle</label>
-                  <div class="col-lg-10">
-                    <input name="user_handle" type="text" class="form-control" id="user_handle" placeholder="Handle">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-lg-10 col-lg-offset-2">
-                    <button type="submit" class="btn btn-primary">Join!</button>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Whitty</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/magic.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>
+          Whitty: <small>Contains Multitudes</small>
+        </h1>
+      </div>
+      <ul class="nav nav-tabs">
+        <li>
+          <a href="/home">Home</a>
+        </li>
+        <li>
+          <a href="/analyze">Analyze Poems</a>
+        </li>
+        <li>
+          <a href="/analyses">See Analyses</a>
+        </li>
+        <li>
+          <a href="/signup">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-md-10">
+      <form class="form-horizontal" action="/signup" method="post">
+        <div class="form-group">
+        <label for="user_handle" class="col-lg-2 control-label">Your Handle</label>
+          <div class="col-lg-10">
+            <input name="user_handle" type="text" class="form-control" id="user_handle" placeholder="Your handle goes here, it would be great if it were something punny or clever...">
+          </div>
+        </div>
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <button type="submit" class="btn btn-primary">Join!</button>
+            </div>
+  </div>
+
+</form>
+</div>
+</div>
+</div>
+</body>
+
+
+
+
