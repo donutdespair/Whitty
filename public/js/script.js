@@ -16,7 +16,7 @@ $("editAnalysis").click(function(){
    });
 
   var getData = function(poemTitle){
-  var poemUrl = "http://poetrydb.org/author,title/Walt Whitman;" + poemTitle;
+  var poemUrl = "https://poetrydb.org/author,title/Walt Whitman;" + poemTitle;
   $.ajax({
   url: poemUrl,
   method: "GET",
