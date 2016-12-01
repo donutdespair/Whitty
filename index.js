@@ -38,8 +38,9 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
 //npm install will install dependencies
 var db = pgp(process.env.DATABASE_URL || 'postgres://student_07@localhost:5432/whitman_db');
 const PORT = process.env.PORT || 3000;
-app.listen(port, function() {
-  console.log('Node app is running on port', port);
+
+app.listen(PORT, function() {
+  console.log('Node app is running on port', PORT);
 });
 //database route
 //var db = pgp('postgres://student_07@localhost:5432/whitman_db');
