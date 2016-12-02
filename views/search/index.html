@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Whitty</title>
-
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -14,10 +12,8 @@
       crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/easy-autocomplete.min.css">
-
   </head>
   <body>
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -55,10 +51,7 @@
 </div>
   <br>
  <div id = "poemDisplay" class="row">
-
-
 </div>
-
     <script
       src="https://code.jquery.com/jquery-3.1.1.js"
       integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
@@ -66,153 +59,84 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/jquery.easy-autocomplete.min.js"></script>
-
-<script>
-var options = {
+    <script>    var options = {
   data: [
-  "Primeval my Love for the Woman I Love."
-  ,
-  "Longings for Home."
-  ,
-  "Song of the Open Road."
-  ,
-  "Warble for Lilac-Time."
-  ,
-  "Or from that Sea of Time."
-  ,
-  "A Boston Ballad, 1854."
-  ,
-  "Whispers of Heavenly Death."
-  ,
-  "Unfolded Out of the Folds."
-  ,
-  "Unnamed Lands."
-  ,
-  "Gods."
-  ,
-  "From Paumanok Starting."
-  ,
-  "Song of the Exposition."
-  ,
-  "Starting from Paumanok."
-  ,
-  "An Old Man’s Thought of School."
-  ,
-  "I Sing the Body Electric."
-  ,
-  "I Dream’d in a Dream."
-  ,
-  "Passage to India."
-  ,
-  "In Former Songs."
-  ,
-  "O Star of France."
-  ,
-  "Miracles."
-  ,
-  "Says."
-  ,
-  "Spain 1873–’74."
-  ,
-  "On Journeys Through The States."
-  ,
-  "Proud Music of The Storm."
-  ,
-  "Out of the Rolling Ocean, the Crowd."
-  ,
-  "As the Time Draws Nigh."
-  ,
-  "Native Moments."
-  ,
-  "What General has a Good Army."
-  ,
-  "Spontaneous Me."
-  ,
-  "O Sun of Real Peace."
-  ,
-  "Ship Starting, The."
-  ,
-  "Adieu to a Soldier."
-  ,
-  "Sleepers, The."
-  ,
-  "This Moment, Yearning and Thoughtful."
-  ,
-  "Beautiful Women."
-  ,
-  "Walt Whitman."
-  ,
-  "There was a Child went Forth."
-  ,
-  "To Think of Time."
-  ,
-  "On the Beach at Night, Alone."
-  ,
-  "That Music Always Round Me."
-  ,
-  "These, I, Singing in Spring."
-  ,
-  "Weave in, Weave in, My Hardy Life."
-  ,
-  "Indications, The."
-  ,
-  "Song for All Seas, All Ships."
-  ,
-  "Song of the Universal."
-  ,
-  "A Woman Waits for Me."
-  ,
-  "France, the 18th year of These States."
-  ,
-  "Song of the Broad-Axe."
-  ,
-  "Poem of Remembrance for a Girl or a Boy."
-  ,
-  "Prayer of Columbus."
-  ,
-  "Full of Life, Now."
-  ,
-  "Come up from the Fields, Father."
-  ,
-  "Look Down, Fair Moon."
-  ,
-  "Poem of Joys."
-  ,
-  "Ashes of Soldiers."
-  ,
-  "To a Locomotive in Winter."
-  ,
-  "Salut au Monde."
-  ,
-  "Song of the Redwood-Tree."
-  ,
-  "Manhattan Streets I Saunter’d, Pondering."
-  ,
-  "When I heard at the Close of the Day."
-  ,
-  "As I Sat Alone by Blue Ontario’s Shores."
-  ,
-  "Locations and Times."
-  ,
-  "O Me! O Life!"
-  ,
-  "Italian Music in Dakota."
-  ,
-  "Mother and Babe."
-  ,
-  "Pensive on Her Dead Gazing, I Heard the Mother of All."
-  ,
-  "Brother of All, with Generous Hand."
-],
-list: {
-    maxNumberOfElements: 50,
+    "Primeval my Love for the Woman I Love.",
+    "Longings for Home.",
+    "Song of the Open Road.",
+    "Warble for Lilac-Time.",
+    "Or from that Sea of Time.",
+    "A Boston Ballad, 1854.",
+    "Whispers of Heavenly Death.",
+    "Unfolded Out of the Folds.",
+    "Unnamed Lands.",
+    "Gods.",
+    "From Paumanok Starting.",
+    "Song of the Exposition.",
+    "Starting from Paumanok.",
+    "An Old Man’s Thought of School.",
+    "I Sing the Body Electric.",
+    "I Dream’d in a Dream.",
+    "Passage to India.",
+    "In Former Songs.",
+    "O Star of France.",
+    "Miracles.",
+    "Says.",
+    "Spain 1873–’74.",
+    "On Journeys Through The States.",
+    "Proud Music of The Storm.",
+    "Out of the Rolling Ocean, the Crowd.",
+    "As the Time Draws Nigh.",
+    "Native Moments.",
+    "What General has a Good Army.",
+    "Spontaneous Me.",
+    "O Sun of Real Peace.",
+    "Ship Starting, The.",
+    "Adieu to a Soldier.",
+    "Sleepers, The.",
+    "This Moment, Yearning and Thoughtful.",
+    "Beautiful Women.",
+    "Walt Whitman.",
+    "There was a Child went Forth.",
+    "To Think of Time.",
+    "On the Beach at Night, Alone.",
+    "That Music Always Round Me.",
+    "These, I, Singing in Spring.",
+    "Weave in, Weave in, My Hardy Life.",
+    "Indications, The.",
+    "Song for All Seas, All Ships.",
+    "Song of the Universal.",
+    "A Woman Waits for Me.",
+    "France, the 18th year of These States.",
+    "Song of the Broad-Axe.",
+    "Poem of Remembrance for a Girl or a Boy.",
+    "Prayer of Columbus.",
+    "Full of Life, Now.",
+    "Come up from the Fields, Father.",
+    "Look Down, Fair Moon.",
+    "Poem of Joys.",
+    "Ashes of Soldiers.",
+    "To a Locomotive in Winter.",
+    "Salut au Monde.",
+    "Song of the Redwood-Tree.",
+    "Manhattan Streets I Saunter’d, Pondering.",
+    "When I heard at the Close of the Day.",
+    "As I Sat Alone by Blue Ontario’s Shores.",
+    "Locations and Times.",
+    "O Me! O Life!",
+    "Italian Music in Dakota.",
+    "Mother and Babe.",
+    "Pensive on Her Dead Gazing, I Heard the Mother of All.",
+    "Brother of All, with Generous Hand."
+    ],
+  list: {
+    maxNumberOfElements: 100,
     match: {
       enabled: true
     }
   }
 };
-$("#poemSearch").easyAutocomplete(options);
-</script>
-
+  $("#poemSearch").easyAutocomplete(options);
+  </script>
   </body>
-  </html>
+</html>

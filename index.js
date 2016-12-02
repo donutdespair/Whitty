@@ -55,7 +55,6 @@ app.get('/no_dice', function(req, res) {
     res.render('no_dice/index');
   });
 
-
 //analyses with data
 app.get('/analyses', function(req, res){
   db.any('SELECT poem_id, poem_title, poem_text, handle, note_text FROM poems;')
