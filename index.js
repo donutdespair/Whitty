@@ -20,9 +20,9 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //call functions
-/*
-var pg = require('pg');
 
+var pg = require('pg');
+/*
 pg.defaults.ssl = true;
 pg.connect(process.env.DATABASE_URL, function(err, client) {
   if (err) throw err;
@@ -62,6 +62,9 @@ app.get('/no_dice', function(req, res) {
     res.render('no_dice/index');
   });
 
+app.get('/analyses', function(req, res) {
+    res.render('analyses/index');
+  });
 //analyses with data
 app.get('/analyses', function(req, res){
   db.any('SELECT poem_id, poem_title, poem_text, handle, note_text FROM poems;')
