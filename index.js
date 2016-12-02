@@ -21,7 +21,12 @@ var allowCrossDomain = function(req, res, next) {
       next();
     }
 };
-app.use(allowCrossDomain)
+
+app.configure(function () {
+ app.use(allowCrossDomain)
+});
+
+
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
