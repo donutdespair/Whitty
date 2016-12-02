@@ -8,8 +8,20 @@ const bcrypt = require('bcryptjs');
 const methodOverride = require('method-override');
 //declare constants
 
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
 
-
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+      res.send(200);
+    }
+    else {
+      next();
+    }
+};
+app.use(allowCrossDomain)
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
@@ -17,14 +29,8 @@ app.use("/", express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 //call functions
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: true
-  }
-});
 //when pushing a project, module file ignored
 //npm install will install dependencies
 var db = pgp(process.env.DATABASE_URL || 'postgres://student_07@localhost:5432/whitman_db');
