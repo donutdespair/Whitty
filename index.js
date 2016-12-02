@@ -6,9 +6,8 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const methodOverride = require('method-override');
+const request = require('request');
 //declare constants
-
-
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
@@ -26,8 +25,18 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {
   console.log('Node app is running on port', PORT);
 });
-//database route
-//var db = pgp('postgres://student_07@localhost:5432/whitman_db');
+
+app.get("/api", function(req, res) {
+    var poem =  req.query.value;
+    var poemApi = "http://poetrydb.org/author,title/Walt Whitman;" + poem;
+    request.get({
+        url: poemApi,
+        json: true},
+        function(err, resp, data) {
+        res.json(data[0])
+    });
+});
+
 // set routes
 //get routes
 app.get('/home', function(req, res) {
@@ -101,7 +110,3 @@ app.post('/signup', function(req, res){
       res.redirect('/signedup')}
     )
   });
-
-
-
-

@@ -15,14 +15,17 @@ $("editAnalysis").click(function(){
      $("textarea").removeClass('hidden');
    });
 
+
   var getData = function(poemTitle){
-  var poemUrl = "http://poetrydb.org/author,title/Walt Whitman;" + poemTitle;
+  var poemObj = "/api";
   $.ajax({
-  url: poemUrl,
+  url: poemObj,
   method: "GET",
-  success: function(poemUrl) {
-    console.log(poemUrl);
-handleResponse(poemUrl);
+  dataType: 'JSON',
+  data: { value: poemTitle },
+  success: function(poemObj) {
+  console.log(poemObj);
+handleResponse(poemObj);
     }
   });
 };
@@ -51,11 +54,10 @@ handleResponse(poemUrl);
   addAJAXFunction();
 
   var handleResponse = function(data){
-    var data = data[0]
     var title = data.title;
     var lines = data.lines.toString();
-    console.log(title)
-    console.log(lines)
+    //console.log(title)
+    //console.log(lines)
     appendPoem(title, lines);
     };
 });
