@@ -21,6 +21,7 @@ As an end user, I want an interactive app that allows me to connect with other p
   * bodyParser
   * mustacheExpress
 * EasyAutocomplete - http://easyautocomplete.com/ - jQuery Plugin
+* PoetryDb - https://github.com/thundercomb/poetrydb/blob/master/README.md - API
 
 ## Wire Frames and Planning
 ![](https://github.com/donutdespair/project2/blob/master/finalwireframesm.jpg)
