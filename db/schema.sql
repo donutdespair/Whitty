@@ -1,7 +1,9 @@
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-user_handle VARCHAR(25) PRIMARY KEY
+  id SERIAL PRIMARY KEY,
+  user_handle VARCHAR(25) UNIQUE,
+  password_digest VARCHAR(255)
 );
 
 
@@ -17,3 +19,6 @@ CREATE TABLE poems (
 
 
 -- psql -d whitman_db -f schema.sql
+--SELECT * FROM poems LEFT OUTER JOIN users ON (poems.handle=users.user_handle);
+
+

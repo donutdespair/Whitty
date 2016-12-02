@@ -46,20 +46,27 @@
   </div>
 <br>
   <div class="row">
-    <div class="col-md-4">
-      <img id="walt" alt="Walt Whitman" src="http://a5.files.biography.com/image/upload/c_fit,cs_srgb,dpr_1.0,h_1200,q_80,w_1200/MTE5NTU2MzE2NDA0ODExMjc1.jpg" class="img-circle" />
+    <div class="col-md-10">
+      <form class="form-horizontal" action="/login" method="post">
+        <div class="form-group">
+        <label for="user_handle" class="col-lg-2 control-label">Your Handle</label>
+          <div class="col-lg-10">
+            <input name="user_handle" type="text" class="form-control" id="user_handle" placeholder="Your handle?">
+          </div>
+        </div>
+          <div class="form-group">
+            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+              <div class="col-lg-10">
+                <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Your password?">
+              </div>
+            </div>
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                  <button type="submit" class="btn btn-primary">Log in!</button>
+                </div>
+            </div>
+          </form>
+        </div>
     </div>
-    <div class="col-md-8">
-      <h3 class="text-muted">
-        Old Rough. New Yorker. Humanist. Essayist. Poet.
-      </h3>
-      <p>
-        Whitman advocated the importance of literature and poetry within democracy and was a Brooklynite way before it was cool. <br>
-        Enter the name of a Whitman poem to read and offer your take on it or see some analyses.<br>
-        <small>But you gotta sign up first to offer analyses.</small>
-      </p>
-    </div>
-  </div>
 </div>
 </body>
-</html>

@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Whitty</title>
-
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/magic.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/easy-autocomplete.min.css">
   </head>
   <body>
-
-    <div class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
@@ -39,9 +35,15 @@
         <li>
           <a href="/signup">Sign Up</a>
         </li>
-      </ul>
+        <li>
+          <a href="/login">Log In</a>
+        </li>
+        <li>
+          <a href="/logout">Log Out</a>
+        </li>
+        </ul>
     </div>
-  </div>
+</div>
 <br>
   <div class="row">
     <div class="col-md-10">
@@ -50,19 +52,32 @@
         <label for="user_handle" class="col-lg-2 control-label">Your Handle</label>
           <div class="col-lg-10">
             <input name="user_handle" type="text" class="form-control" id="user_handle" placeholder="Your handle goes here, it would be great if it were something punny or clever...">
+            </div>
           </div>
-        </div>
-          <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
+                <div class="form-group">
+                  <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                  <div class="col-lg-10">
+                    <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
               <button type="submit" class="btn btn-primary">Join!</button>
             </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-
-</form>
-</div>
-</div>
-</div>
-</body>
+<script
+      src="https://code.jquery.com/jquery-3.1.1.js"
+      integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+      crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="/js/jquery.easy-autocomplete.min.js"></script>
+    <script language="javascript" type="text/javascript"></script>
+  </body>
 
 
 

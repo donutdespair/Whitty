@@ -39,14 +39,14 @@ app.get('/', function(req, res){ // request and response
  // need to take sessions into account and
  //add a few more lines before the res.render
  var logged_in;
- var email;
+ var user_handle;
  if(req.session.user){ // the session is remembered
    logged_in = true;
-   email = req.session.user.email
+   user_handle = req.session.user.user_handle
  }
  var data = {
    'logged_in': logged_in,
-   'email': email
+   'user_handle': user_handle
  }
  res.render('index', data);
 })
@@ -62,8 +62,8 @@ app.post('/signup', function(req, res){
   var data = req.body;
   //body parser pulls input data
   bcrypt.hash(data.password, 10, function(err, hash){
-      db.none('INSERT INTO users (email, password_digest) VALUES ($1,$2)',
-    [data.email, hash]
+      db.none('INSERT INTO users (user_handle, password_digest) VALUES ($1,$2)',
+    [data.user_handle, hash]
     ).then(function(){
       res.send('User Created')
 //hash pw, insert user and hash into db
@@ -76,21 +76,21 @@ app.post('/login', function(req, res){
 //login screen
 
   db.one(
-    "SELECT * FROM users WHERE email = $1",
-    [data.email]
-//searches db for user email
+    "SELECT * FROM users WHERE user_handle = $1",
+    [data.user_handle]
+//searches db for user user_handle
   ).catch(function(){
-    res.send('Email/Password not found.')
-//if email not found
+    res.send('user_handle/Password not found.')
+//if user_handle not found
   }).then(function(user){
     bcrypt.compare(data.password, user.password_digest, function(err, cmp){
  //compares password hash
       if(cmp){
         req.session.user = user;
         res.redirect('/');
-//send user to profile if pw/email correct
+//send user to profile if pw/user_handle correct
       } else {
-        res.send('Email/Password not found.')
+        res.send('user_handle/Password not found.')
 //sends user message
       }
     });
