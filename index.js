@@ -5,8 +5,6 @@ const mustacheExpress = require('mustache-express');
 const bodyParser = require("body-parser");
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
-const cors = require('cors');
-const unirest = require('unirest');
 const methodOverride = require('method-override');
 //declare constants
 
@@ -20,20 +18,13 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //call functions
-
-var pg = require('pg');
-/*
-pg.defaults.ssl = true;
-pg.connect(process.env.DATABASE_URL, function(err, client) {
-  if (err) throw err;
-  console.log('Connected to postgres! Getting schemas...');
-
-  client
-    .query('SELECT table_schema,table_name FROM information_schema.tables;')
-    .on('row', function(row) {
-      console.log(JSON.stringify(row));
-    });
-});*/
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: true
+  }
+});
 //when pushing a project, module file ignored
 //npm install will install dependencies
 var db = pgp(process.env.DATABASE_URL || 'postgres://student_07@localhost:5432/whitman_db');
